@@ -5,6 +5,7 @@ import {
 } from 'recharts';
 import { Wifi, ArrowUpDown, Globe } from 'lucide-react';
 import KpiCard from '../components/KpiCard';
+import { API_BASE } from '../config';
 
 const PIE_COLORS = ['#6366f1', '#06b6d4', '#10b981', '#eab308', '#f97316', '#ef4444', '#8b5cf6', '#ec4899', '#14b8a6', '#f43f5e'];
 
@@ -35,7 +36,7 @@ export default function NetworkAnalytics() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/analytics/network')
+    fetch(API_BASE + '/api/analytics/network')
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false); })
       .catch(() => setLoading(false));

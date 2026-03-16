@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { FileText, Download, Clock, CheckCircle, Loader, Calendar } from 'lucide-react';
+import { API_BASE } from '../config';
 
 function formatDate(ts) {
   return new Date(ts).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
@@ -10,7 +11,7 @@ export default function Reports() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/reports')
+    fetch(API_BASE + '/api/reports')
       .then(r => r.json())
       .then(d => { setReports(d.reports); setLoading(false); })
       .catch(() => setLoading(false));

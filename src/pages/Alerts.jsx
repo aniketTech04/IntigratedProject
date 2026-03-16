@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { AlertTriangle, X } from 'lucide-react';
+import { API_BASE } from '../config';
 
 function formatTime(ts) {
   return new Date(ts).toLocaleString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
@@ -13,7 +14,7 @@ export default function Alerts() {
 
   useEffect(() => {
     const params = filter ? `?severity=${filter}` : '';
-    fetch(`/api/alerts${params}`)
+    fetch(`${API_BASE}/api/alerts${params}`)
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false); })
       .catch(() => setLoading(false));

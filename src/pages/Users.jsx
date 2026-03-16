@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
+import { API_BASE } from '../config';
 
 function formatDate(ts) {
   return new Date(ts).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
@@ -28,7 +29,7 @@ export default function Users() {
     if (department) params.set('department', department);
     if (riskLevel) params.set('riskLevel', riskLevel);
     if (sort) params.set('sort', sort);
-    fetch(`/api/users?${params}`)
+    fetch(`${API_BASE}/api/users?${params}`)
       .then(r => r.json())
       .then(d => { setUsers(d.users); setLoading(false); })
       .catch(() => setLoading(false));

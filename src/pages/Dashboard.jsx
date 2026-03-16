@@ -4,6 +4,7 @@ import {
   PieChart, Pie, Cell, BarChart, Bar, Legend,
 } from 'recharts';
 import { Users, Activity, AlertTriangle, Wifi, ShieldCheck, Database, TrendingUp, Zap } from 'lucide-react';
+import { API_BASE } from '../config';
 import KpiCard from '../components/KpiCard';
 
 const CHART_COLORS = ['#ef4444', '#f97316', '#eab308', '#22d3ee', '#6366f1', '#10b981'];
@@ -34,7 +35,7 @@ export default function Dashboard() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch('/api/dashboard')
+    fetch(API_BASE + '/api/dashboard')
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false); })
       .catch(() => setLoading(false));

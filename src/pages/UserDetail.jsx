@@ -4,6 +4,7 @@ import {
   BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer,
   PieChart, Pie, Cell, AreaChart, Area,
 } from 'recharts';
+import { API_BASE } from '../config';
 import { ArrowLeft, Mail, MapPin, Briefcase, Calendar, Globe } from 'lucide-react';
 
 const COLORS = ['#6366f1', '#06b6d4', '#10b981', '#eab308', '#f97316', '#ef4444', '#8b5cf6', '#ec4899', '#14b8a6', '#f43f5e'];
@@ -47,7 +48,7 @@ export default function UserDetail() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch(`/api/users/${id}`)
+    fetch(`${API_BASE}/api/users/${id}`)
       .then(r => r.json())
       .then(d => { setData(d); setLoading(false); })
       .catch(() => setLoading(false));
