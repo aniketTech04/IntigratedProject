@@ -1,0 +1,9 @@
+# Terminal 1 — Backend
+cd /home/aniket/Documents/IntigratedProject/server
+npm install
+node index.js
+
+# Terminal 2 — Frontend
+cd /home/aniket/Documents/IntigratedProject
+npm install
+npm run dev
